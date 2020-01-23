@@ -1,5 +1,5 @@
-const chalk = require("chalk");
-const beep = require("beepbeep");
+const chalk = require("./node_modules/chalk");
+const beep = require("./node_modules/beepbeep");
 
 class Person {
   constructor(name, favColors, backgroundColors) {
