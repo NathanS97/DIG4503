@@ -9,7 +9,7 @@
 
 <body>
   <script>
-    function clicker(event) {
+    /*function clicker(event) {
       event.preventDefault();
 
       let element = document.querySelector("input");
@@ -27,12 +27,128 @@
         }
 
       });
+    }*/
+
+    function readName(event) {
+      event.preventDefault();
+
+      let element = document.querySelector("name");
+
+      fetch("/api/movies/name/" + element.value).then((res) => {
+        return res.json();
+
+      }).then((processed) => {
+        let reporting = document.querySelector("#reportingArea");
+
+        if (processed.error) {
+          reporting.innerHTML = processed.error;
+        } else {
+          reporting.innerHTML = "Secret";
+        }
+
+      });
+
+      element.value = "";
     }
+
+    function readScore(event) {
+      event.preventDefault();
+
+      let element = document.querySelector("#score");
+
+      fetch("/api/movies/score" + element.value).then((res) => {
+        return res.json();
+
+      }).then((processed) => {
+        let reporting = document.querySelector("#reportingArea");
+
+        if (processed.error) {
+          reporting.innerHTML = processed.error;
+        } else {
+          reporting.innerHTML = processed.score;
+        }
+
+      });
+
+      element.value = "";
+    }
+
+    function createMovie(event) {
+      event.preventDefault();
+
+      let movieName = document.querySelector("#movieName");
+      let movieScore = document.querySelector("#movieScore");
+
+      fetch("/api/movies/" + movieName.value + "/" + movieScore.value, {
+        "method": "post"
+      }).then((res) => {
+        return res.json();
+
+      }).then((processed) => {
+        let reporting = document.querySelector("#reportingArea");
+
+        if (processed.error) {
+          reporting.innerHTML = processed.error;
+        } else {
+          reporting.innerHTML = processed.name;
+        }
+
+      });
+
+      movieName.value = "";
+      movieScore.value = "";
+    }
+
+    function updateMovie(event) {
+      event.preventDefault();
+
+      let movieName = document.querySelector("#updateMovieName");
+      let movieScore = document.querySelector("#updateMovieScore");
+
+      fetch("/api/movies/" + updateMovieName.value + "/" + updateMovieScore.value, {
+        "method": "patch"
+      }).then((res) => {
+        return res.json();
+
+      }).then((processed) => {
+        let reporting = document.querySelector("#reportingArea");
+
+        if (processed.error) {
+          reporting.innerHTML = processed.error;
+        } else {
+          reporting.innerHTML = processed.name;
+        }
+
+      });
+
+      updateMovieName.value = "";
+      updateMovieScore.value = "";
+    }
+
   </script>
-  <form onsubmit="clicker(event)">
-    <input id="pokemonId" type="text">
+  <h2>Name</h2>
+  <form onsubmit="readName(event)">
+    <input id="name" type="text">
     <button>Submit</button>
   </form>
+  <h2>Score</h2>
+  <form onsubmit="readScore(event)">
+    <input id="score" type="text">
+    <button>Submit</button>
+  </form>
+  <h2>Add a Movie</h2>
+  <form onsubmit="createMovie(event)">
+    <input id="movieName" type="text">
+    <input id="movieScore" type="text">
+    <button>Submit</button>
+  </form>
+  <h2>Update a Movie</h2>
+  <form onsubmit="createMovie(event)">
+    <input id="updateMovieName" type="text">
+    <input id="updateMovieScore" type="text">
+    <button>Submit</button>
+  </form>
+  <h2>Reporting</h2>
   <div id="reportingArea"></div>
 </body>
 
