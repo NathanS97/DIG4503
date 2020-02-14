@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 5</title>
+  </head>
+
+  <body>
+    <script>
+      function readName(event) {
+        event.preventDefault();
+
+        let element = document.querySelector('#name');
+
+        fetch('/name/' + element.value)
+          .then(res => {
+            return res.json();
+          })
+          .then(processed => {
+            let reporting = document.querySelector('#reportingArea');
+
+            if (processed.error) {
+              reporting.innerHTML = processed.error;
+            } else {
+              reporting.innerHTML = processed.name;
+            }
+          });
+
+        element.value = '';
+      }
+
+      function readID(event) {
+        event.preventDefault();
+
+        let element = document.querySelector('#id');
+
+        fetch('/id/' + element.value)
+          .then(res => {
+            return res.json();
+          })
+          .then(processed => {
+            let reporting = document.querySelector('#reportingArea');
+
+            if (processed.error) {
+              reporting.innerHTML = processed.error;
+            } else {
+              reporting.innerHTML = processed.name;
+            }
+          });
+
+        element.value = '';
+      }
+    </script>
+    <h2>Name</h2>
+    <form onsubmit="readName(event)">
+      <input id="name" type="text" />
+      <button>Submit</button>
+    </form>
+    <h2>ID</h2>
+    <form onsubmit="readID(event)">
+      <input id="id" type="text" />
+      <button>Submit</button>
+    </form>
+    <h2>Reporting</h2>
+    <div id="reportingArea"></div>
+  </body>
+</html>
