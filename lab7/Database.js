@@ -17,7 +17,6 @@ const URL = "mongodb+srv://nathansnodgrass:39AuPiLZxNMODO7M@cluster0-tc9sb.mongo
 //
 class Database {
     constructor() {
-
         // Define a value that will eventually be the collection "Movies"
         this.collection = null;
         // Define a value that will eventually be an object ('pipe') to the system
@@ -48,7 +47,6 @@ class Database {
     }
 
     findTitle(title) {
-
         // Is 'this.collection' null?
         // It might be if we called this function before the 
         //  callback function finished inside of MongoClient.connect()
@@ -67,7 +65,6 @@ class Database {
     }
 
     findYear(year) {
-
         // The request parameter will be a string.
         // We can use parseInt() to convert it into an Integer
         year = parseInt(year);

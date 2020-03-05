@@ -24,20 +24,19 @@ let database = new Database();
 // - Either an "error" object OR 
 // - The movie object matching the search
 App.get("/movies/title/:title", (req, res) => {
-
     // Set an "error" result to send back first
-    let result = {"error": "Could not a movie with that title!"};
+    let result = { "error": "Could not a movie with that title!" };
 
     // findTitle() will return a Promise
     // Once it finishes, send the response
     database.findTitle(req.params.title).then((movie) => {
 
         // If a movie was not found, it will be null
-        if(movie != null) {
+        if (movie != null) {
             // If it is not null, set result to whatever movie is
             result = movie;
         }
-        
+
         // Send as a response: either the "error" object or the movie object found
         res.json(result);
 
@@ -46,6 +45,18 @@ App.get("/movies/title/:title", (req, res) => {
 });
 
 // TODO: Add a route /movies/year/:year
+App.get("/movies/year/:year", (req, res) => {
+    let result = { "error": "Couldn't find a movie in that year!" };
+
+    database.findYear(req.params.year).then((year) => {
+        if (year != null) {
+            result = year;
+        }
+        res.json(result);
+
+    });
+
+});
 
 // Listen on 'port'
 App.listen(port, () => {
