@@ -5,7 +5,7 @@ const port = 80;
 const MongoDB = require('mongodb');
 const MongoClient = MongoDB.MongoClient;
 
-const URL = "mongodb+srv://username:password@cluster0-tc9sb.mongodb.net/";
+const URL = "mongodb+srv://nathansnodgrass:39AuPiLZxNMODO7M@cluster0-tc9sb.mongodb.net/";
 
 let collection = null;
 
