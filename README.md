@@ -8,9 +8,9 @@ and functional applications.
 ### What We've Used
 - React
 - Node
-    - Express
     - Chalk
     - Concurrently
     - Cors
-    - Nodemon
+    - Express
     - JSON-Pokemon
+    - Nodemon
