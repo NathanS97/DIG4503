@@ -1,3 +1,4 @@
+import IdSearch from '../components/IdSearch';
 import Head from 'next/Head';
 import Link from 'next/link';
 import styles from './styles.module.css';

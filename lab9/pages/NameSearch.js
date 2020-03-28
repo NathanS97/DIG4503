@@ -1,3 +1,4 @@
+import NameSearch from '../components/NameSearch';
 import Head from 'next/Head';
 import Link from 'next/link';
 import styles from './styles.module.css';

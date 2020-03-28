@@ -1,3 +1,4 @@
+import TypeSearch from '../components/TypeSearch';
 import Head from 'next/Head';
 import Link from 'next/link';
 import styles from './styles.module.css';
