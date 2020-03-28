@@ -9,12 +9,15 @@ class TypeSearch extends React.Component {
     fetch("/api/pokemon/typeList/" + type.value)
       .then((res) => { return res.json(); })
       .then((processed) => {
-        let resultElement = document.querySelector("#typeResults");
+        let resultName = document.querySelector("#resultName")
+        let resultType = document.querySelector("#resultType");
 
         if (processed.error) {
-          resultElement.innerHTML = "No Pokemon could be found with that type";
+          resultName.innerHTML = processed.error;
+          resultType.innerHTML = processed.error;
         } else {
-          resultElement.innerHTML = "Found, the Pokemon with that type are " + processed.name;
+          resultType.innerHTML = processed.typeList;
+          resultName.innerHTML = processed.name;
         }
       });
   }
@@ -29,7 +32,8 @@ class TypeSearch extends React.Component {
           <h3 className={styles.header}>Search by Type</h3>
           <input type="text" id="typeInput" className={styles.input} />
           <button className={styles.button} onClick={() => { this.findType() }}>Submit</button>
-          <div id="typeResults" className={styles.results}></div>
+          <div id="resultType" className={styles.results}></div>
+          <div id="resultName" className={styles.results}></div>
         </div>
 
         <div className={styles.links}>
