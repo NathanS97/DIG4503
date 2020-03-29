@@ -1,16 +1,21 @@
-class IdSearch extends React.Component {
-  findId() {
-    let id = document.querySelector("#idInput");
+import React from "react";
 
-    fetch("/api/pokemon/id/" + id.value)
-      .then((res) => { return res.json(); })
+class IdSearch extends React.Component {
+  findId(event) {
+    event.preventDefault();
+    let element = document.querySelector("#id");
+
+    fetch('/api/pokemon/id/' + element.value).then((res) => {
+      return res.json();
+    })
       .then((processed) => {
-        let resultElement = document.querySelector("#idResults");
+
+        let reporting = document.querySelector("#reportingArea");
 
         if (processed.error) {
-          resultElement.innerHTML = "No Pokemon could be found with that ID";
+          reporting.innerHTML = processed.error;
         } else {
-          resultElement.innerHTML = "Found, the Pokemon with that ID is " + processed.name;
+          reporting.innerHTML = processed.name;
         }
       });
   }
@@ -18,10 +23,12 @@ class IdSearch extends React.Component {
   render() {
     return (
       <div>
-        <h3>ID Search</h3>
-        <input type="text" id="idInput" />
-        <button onClick={() => { this.findId() }}>Submit</button>
-        <div id="idResults"></div>
+        <h2>Search Pokemon ID</h2>
+        <form onSubmit={this.findId}>
+          <input id="id" type="text" placeholder="Id" />
+          <button>SEARCH</button>
+        </form>
+        <br></br>
       </div>
     );
   }

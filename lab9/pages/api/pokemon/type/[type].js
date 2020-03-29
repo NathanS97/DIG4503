@@ -1,25 +1,16 @@
-import pokemon from 'json-pokemon';
+import getPokemon from 'json-pokemon/getPokemon';
 
 function response(req, res) {
-  let result = { "error": "That type doesnt exist" };
+  for (let i = 0; i < getPokemon.length; i++) {
+    for (let k = 0; getPokemon[i].typeList.length; k++) {
 
-  let type = req.query.type;
+      let result = { "error": "No Pokemon exists with that type" };
 
-  let results = [];
+      let pokemon = getPokemon.getPokemonByType(req.query.type);
 
-  for (let i = 0; i < pokemon.length; i++) {
-    console.log(pokemon[i]);
-    for (let j = 0; j < pokemon[i].typeList.length; j++) {
-
-      if (pokemon[i].typeList == type) {
-        results.push(pokemon[i].typeList);
-        console.log(pokemon[i]);
-
-      } else if (result.length > 1) {
-        res.json(result.error);
+      if (pokemon == getPokemon[i].typeList.length) {
+        result = pokemon;
       }
-
-      res.json(results);
     }
   }
 }

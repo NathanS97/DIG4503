@@ -1,59 +1,34 @@
-import IdSearch from '../components/IdSearch';
-import Head from 'next/Head';
+import Head from 'next/head';
 import Link from 'next/link';
+import IdSearch from '../components/IdSearch';
 import styles from './styles.module.css';
 
-class IdSearch extends React.Component {
-  findId() {
-    let id = document.querySelector("#idInput");
-
-    fetch("/api/pokemon/id/" + id.value)
-      .then((res) => { return res.json(); })
-      .then((processed) => {
-        let resultElement = document.querySelector("#idResults");
-
-        if (processed.error) {
-          resultElement.innerHTML = "No Pokemon could be found with that ID";
-        } else {
-          resultElement.innerHTML = "Found, the Pokemon with that ID is " + processed.name;
-        }
-      });
-  }
-
-  render() {
-    return (
-      <div>
-        <Head>
-          <title>ID</title>
-        </Head>
-        <div>
-          <h3 className={styles.header}>Search by ID</h3>
-          <input type="text" id="idInput" className={styles.input} />
-          <button className={styles.button} onClick={() => { this.findId() }}>Submit</button>
-          <div id="idResults" className={styles.results}></div>
-        </div>
-
-        <div className={styles.links}>
-          <Link href="/NameSearch">
-            <a>Name Search</a>
-          </Link>
-        </div>
-
-        <div className={styles.links}>
-          <Link href="/index">
-            <a>Home</a>
-          </Link>
-        </div>
-
-        <div className={styles.links}>
-          <Link href="/TypeSearch">
-            <a>Type Search</a>
-          </Link>
-        </div>
-
+const Id = () => {
+  return (
+    <div className={styles.body} >
+      <Head>
+        <title>Id Search</title>
+      </Head>
+      <br></br>
+      <Link href="/index">
+        <a className={styles.link}>Home</a>
+      </Link>
+      <IdSearch />
+      <br></br>
+      <Link href="/NameSearch">
+        <a className={styles.link}>Search by Name</a>
+      </Link>
+      <br></br>
+      <br></br>
+      <Link href="/TypeSearch">
+        <a className={styles.link}>Search by Type</a>
+      </Link>
+      <br></br>
+      <div className={styles.heading}>Result(s):
+      <div className={styles.reporting} id="reportingArea"></div>
       </div>
-    );
-  }
+    </div >
+  );
 }
 
-export default IdSearch;
+export default Id;

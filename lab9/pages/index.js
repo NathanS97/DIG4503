@@ -4,34 +4,26 @@ import styles from './styles.module.css';
 
 const Home = () => {
   return (
-    <div>
+    <div className={styles.body}>
       <Head>
         <title>JSON PokeDex</title>
       </Head>
-      <div>
-        <h3 className={styles.header}>PokeDex Home</h3>
-      </div>
+      <br></br>
+      <h1 className={styles.heading}>JSON PokeDex</h1>
 
-      <div className={styles.links}>
-        <Link href="/IdSearch" className={styles.links}>
-          <a>Id Search</a>
-        </Link>
-      </div>
+      <h2>Search By:</h2>
 
-      <div className={styles.links}>
-        <Link href="/NameSearch">
-          <a>Name Search</a>
-        </Link>
-      </div>
-
-      <div className={styles.links}>
-        <Link href="/TypeSearch">
-          <a>Type Search</a>
-        </Link>
-      </div>
+      <Link href="/IdSearch">
+        <a className={styles.link}>ID</a>
+      </Link>
+      <Link href="/NameSearch">
+        <a className={styles.link}>NAME</a>
+      </Link>
+      <Link href="/TypeSearch">
+        <a className={styles.link}>TYPE</a>
+      </Link>
     </div>
-
   );
 }
 
-export default Home;
+export default Home; 
