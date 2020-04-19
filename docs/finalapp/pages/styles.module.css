@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Roboto&display=swap');
+
+.heading{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  margin:auto;
+  width: 60%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.body {
+  background-image: url("https://i.imgur.com/4T8S5qK.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 1000px;
+  text-align:center;
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+} 
+
+.link {
+  color: black; 
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: #779ecb;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  padding: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 10px;
+}
+
+.link:hover{
+  background: #DF5F89;
+}
+
+.reporting{
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px;
+}
+
+.input{
+  font-family: Arial, Helvetica, sans-serif;
+  width:20%;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.button{
+  font-family: Arial, Helvetica, sans-serif;
+  background: #DF5F89;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px;
+
+}.links {
+  background-color:#4f83cc;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.links:hover, .links:active {
+  background-color:white;
+}
+
+.header {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+
+.button {
+  background-color: #4f83cc;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.input {
+  padding: 13px 31px;
+  margin-left: 5px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.results {
+  padding: 15px 32px;
+  margin-left: 5px;
+  text-align: left;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
